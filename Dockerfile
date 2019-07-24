@@ -1,6 +1,6 @@
 FROM gcr.io/cloud-builders/wget
 
-RUN export VERSION=`curl -s https://api.github.com/repos/cdr/code-server/releases/latest | grep -oP '"tag_name": "\K(.*)(?=")'`
+ENV VERSION=`curl -s https://api.github.com/repos/cdr/code-server/releases/latest | grep -oP '"tag_name": "\K(.*)(?=")'`
 RUN wget https://github.com/cdr/code-server/releases/download/$VERSION/code-server$VERSION-linux-x64.tar.gz
 RUN tar -xvzf code-server$VERSION-linux-x64.tar.gz -C /code-server
 
