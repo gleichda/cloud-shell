@@ -1,0 +1,18 @@
+steps:
+  - id: build
+    name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - -t
+      - gcr.io/$PROJECT_ID/cloud-shell-image:$BRANCH_NAME
+      - .
+  - id: tag master as latest
+    name: gcr.io/cloud-builders/docker
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        [[  "${BRANCH_NAME}" == "master" ]] || { echo "Skipping tagging as $BRANCH_NAME is not master"; exit 0; };
+        docker push gcr.io/$GCP_PROJECT_ID/cloud-shell-image:latest
+images:
+  - "gcr.io/$PROJECT_ID/cloud-shell-image:$BRANCH_NAME"
