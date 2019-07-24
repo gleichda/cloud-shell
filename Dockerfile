@@ -10,5 +10,3 @@ RUN ls -la
 FROM gcr.io/cloudshell-images/cloudshell:latest
 
 COPY --from=builder /code-server /usr/local/bin/code-server
-
-RUN apt update && apt install zsh && sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
