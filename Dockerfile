@@ -9,9 +9,9 @@ RUN  tar -xvzf code-server${CODESERVER_VERSION}-linux-x64.tar.gz -C / && \
   mv /code-server${CODESERVER_VERSION}-linux-x64/code-server /
 
 ADD https://github.com/segmentio/terraform-docs/releases/download/$TFDOCS_VERSION/terraform-docs-$TFDOCS_VERSION-linux-amd64  /terraform-docs
-RUN ls -la /
 
 ADD https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip /
+RUN ls -la /
 RUN unzip -o terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 
 RUN chmod +x /code-server
