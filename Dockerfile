@@ -8,6 +8,9 @@ RUN CODESERVER_VERSION=`curl -s https://api.github.com/repos/cdr/code-server/rel
 RUN TFDOCS_VERSION=`curl -s https://api.github.com/repos/segmentio/terraform-docs/releases/latest | grep -oP '"tag_name": "\K(.*)(?=")'` && \
   wget https://github.com/segmentio/terraform-docs/releases/download/$TFDOCS_VERSION/terraform-docs-$TFDOCS_VERSION-linux-amd64 -O /terraform-docs
 
+  RUN chmod +x /code-server
+  RUN chmod +x /terraform-docs
+
 RUN ls -la /
 
 
