@@ -27,3 +27,4 @@ FROM gcr.io/cloudshell-images/cloudshell:latest
 
 COPY --from=downloader /code-server /usr/local/bin/code-server
 COPY --from=downloader /terraform-docs /usr/local/bin/terraform-docs
+COPY --from=downloader /terraform /usr/local/bin/terraform
