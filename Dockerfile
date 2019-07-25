@@ -1,9 +1,8 @@
-ARG TERRAFORM_VERSION="0.11.14"
-ARG TFDOCS_VERSION="v0.6.0"
-ARG CODESERVER_VERSION="1.1156-vsc1.33.1"
-
-
 FROM gcr.io/cloud-builders/wget AS downloader
+
+ENV TERRAFORM_VERSION="0.11.14"
+ENV TFDOCS_VERSION="v0.6.0"
+ENV CODESERVER_VERSION="1.1156-vsc1.33.1"
 
 ADD https://github.com/cdr/code-server/releases/download/${CODESERVER_VERSION}/code-server${CODESERVER_VERSION}-linux-x64.tar.gz /
 RUN  tar -xvzf code-server${CODESERVER_VERSION}-linux-x64.tar.gz -C / && \
