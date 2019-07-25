@@ -13,14 +13,11 @@ RUN  tar -xvzf code-server${CODESERVER_VERSION}-linux-x64.tar.gz -C / && \
 ADD https://github.com/segmentio/terraform-docs/releases/download/$TFDOCS_VERSION/terraform-docs-$TFDOCS_VERSION-linux-amd64  /terraform-docs
 
 ADD https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip /
-RUN ls -la /
 RUN unzip -o terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 
 RUN chmod +x /code-server
 RUN chmod +x /terraform-docs
 RUN chmod +x /terraform
-
-RUN ls -la /
 
 
 FROM gcr.io/cloudshell-images/cloudshell:latest
