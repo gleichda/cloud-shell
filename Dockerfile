@@ -1,15 +1,23 @@
+ARG TERRAFORM_VERSION="0.11.14"
+ARG TFDOCS_VERSION="v0.6.0"
+ARG CODESERVER_VERSION="1.1156-vsc1.33.1"
+
+
 FROM gcr.io/cloud-builders/wget AS downloader
 
-RUN CODESERVER_VERSION=`curl -s https://api.github.com/repos/cdr/code-server/releases/latest | grep -oP '"tag_name": "\K(.*)(?=")'` && \
-  wget https://github.com/cdr/code-server/releases/download/$CODESERVER_VERSION/code-server$CODESERVER_VERSION-linux-x64.tar.gz && \
-  tar -xvzf code-server$CODESERVER_VERSION-linux-x64.tar.gz -C / && \
-  mv /code-server$CODESERVER_VERSION-linux-x64/code-server /
+ADD https://github.com/cdr/code-server/releases/download/${CODESERVER_VERSION}/code-server${CODESERVER_VERSION}-linux-x64.tar.gz /
+RUN  tar -xvzf code-server${CODESERVER_VERSION}-linux-x64.tar.gz -C / && \
+  mv /code-server${CODESERVER_VERSION}-linux-x64/code-server /
 
-RUN TFDOCS_VERSION=`curl -s https://api.github.com/repos/segmentio/terraform-docs/releases/latest | grep -oP '"tag_name": "\K(.*)(?=")'` && \
-  wget https://github.com/segmentio/terraform-docs/releases/download/$TFDOCS_VERSION/terraform-docs-$TFDOCS_VERSION-linux-amd64 -O /terraform-docs
+ADD https://github.com/segmentio/terraform-docs/releases/download/$TFDOCS_VERSION/terraform-docs-$TFDOCS_VERSION-linux-amd64  /terraform-docs
+RUN ls -la /
 
-  RUN chmod +x /code-server
-  RUN chmod +x /terraform-docs
+ADD https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip /
+RUN unzip -o terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+
+RUN chmod +x /code-server
+RUN chmod +x /terraform-docs
+RUN chmod +x /terraform
 
 RUN ls -la /
 
