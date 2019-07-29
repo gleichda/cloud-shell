@@ -22,4 +22,5 @@ RUN chmod +x /binaries/*
 
 FROM gcr.io/cloudshell-images/cloudshell:latest
 
+RUN apt install -y zsh
 COPY --from=downloader /binaries/* /usr/local/bin/
