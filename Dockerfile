@@ -22,6 +22,6 @@ RUN chmod +x /binaries/*
 
 FROM gcr.io/cloudshell-images/cloudshell:latest
 
-RUN apt install -y zsh
+RUN apt install -y zsh netcat-openbsd
 RUN npm install -g markdownlint-cli
 COPY --from=downloader /binaries/* /usr/local/bin/
