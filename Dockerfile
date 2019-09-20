@@ -15,8 +15,8 @@ RUN  tar -xvzf code-server${CODESERVER_VERSION}-linux-x64.tar.gz -C / && \
 ADD https://github.com/segmentio/terraform-docs/releases/download/$TFDOCS_VERSION/terraform-docs-$TFDOCS_VERSION-linux-amd64  /binaries/terraform-docs
 
 ADD https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.tar.gz /
-RUN  tar -xvzf hugo_${HUGO_VERSION}_Linux-64bit.tar.gz -C / && \
-  mv /hugo_${HUGO_VERSION}_Linux-64bit/hugo /binaries/
+RUN  tar -xvzf hugo_${HUGO_VERSION}_Linux-64bit.tar.gz -C /
+RUN mv /hugo /binaries/
 
 ADD https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip /
 RUN unzip -o terraform_${TERRAFORM_VERSION}_linux_amd64.zip
