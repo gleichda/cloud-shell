@@ -2,7 +2,7 @@ FROM gcr.io/cloud-builders/wget AS downloader
 
 ENV TERRAFORM_VERSION="0.12.12"
 ENV TFDOCS_VERSION="v0.6.0"
-ENV CODESERVER_VERSION="2.1638-vsc1.39.2"
+ENV CODESERVER_VERSION="2.1665-vsc1.39.2"
 ENV HUGO_VERSION=0.59.0
 
 RUN apt install -y unzip
