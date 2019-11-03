@@ -8,9 +8,9 @@ ENV HUGO_VERSION=0.59.0
 RUN apt install -y unzip
 RUN mkdir /binaries
 
-ADD https://github.com/cdr/code-server/releases/download/${CODESERVER_VERSION}/code-server${CODESERVER_VERSION}-linux-x64.tar.gz /
-RUN  tar -xvzf code-server${CODESERVER_VERSION}-linux-x64.tar.gz -C / && \
-  mv /code-server${CODESERVER_VERSION}-linux-x64/code-server /binaries/
+ADD https://github.com/cdr/code-server/releases/download/${CODESERVER_VERSION}/code-server${CODESERVER_VERSION}-linux-x86_64.tar.gz /
+RUN  tar -xvzf code-server${CODESERVER_VERSION}-linux-x86_64.tar.gz -C / && \
+  mv /code-server${CODESERVER_VERSION}-linux-x86_64/code-server /binaries/
 
 ADD https://github.com/segmentio/terraform-docs/releases/download/$TFDOCS_VERSION/terraform-docs-$TFDOCS_VERSION-linux-amd64  /binaries/terraform-docs
 
